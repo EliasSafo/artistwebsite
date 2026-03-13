@@ -1,0 +1,80 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "music"
+    label: "Music Releases"
+    folder: "content/music"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "select", options: ["album", "single", "ep"] }
+      - { label: "Release Date", name: "releaseDate", widget: "date" }
+      - { label: "Cover Art", name: "coverArt", widget: "image" }
+      - { label: "Spotify Link", name: "spotify", widget: "string", required: false }
+      - { label: "Apple Music Link", name: "apple", widget: "string", required: false }
+      - { label: "YouTube Link", name: "youtube", widget: "string", required: false }
+      - { label: "Tracklist", name: "tracklist", widget: "list", required: false }
+
+  - name: "tour"
+    label: "Tour Dates"
+    folder: "content/tour"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "City", name: "city", widget: "string" }
+      - { label: "Venue", name: "venue", widget: "string" }
+      - { label: "Country", name: "country", widget: "string" }
+      - { label: "Ticket Link", name: "ticketLink", widget: "string", required: false }
+      - { label: "Sold Out", name: "soldOut", widget: "boolean", default: false, required: false }
+
+  - name: "merch"
+    label: "Merchandise"
+    folder: "content/merch"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Price", name: "price", widget: "number" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "select", options: ["apparel", "accessories", "music"] }
+      - { label: "Sizes", name: "sizes", widget: "list", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/settings/about.json"
+        fields:
+          - { label: "Short Bio", name: "shortBio", widget: "text" }
+          - { label: "Full Story", name: "fullStory", widget: "markdown" }
+          - { label: "Press Photo", name: "pressPhoto", widget: "image" }
+
+      - label: "Contact Info"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - { label: "General Email", name: "generalEmail", widget: "string" }
+          - { label: "Booking Email", name: "bookingEmail", widget: "string" }
+          - { label: "Management Name", name: "managementName", widget: "string" }
+          - { label: "Management Company", name: "managementCompany", widget: "string" }
+          - { label: "Management Email", name: "managementEmail", widget: "string" }
+
+      - label: "Social Media"
+        name: "socials"
+        file: "content/settings/socials.json"
+        fields:
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Twitter URL", name: "twitter", widget: "string" }
+          - { label: "TikTok URL", name: "tiktok", widget: "string" }
+          - { label: "Spotify URL", name: "spotify", widget: "string" }
+          - { label: "YouTube URL", name: "youtube", widget: "string" }
+          - { label: "Apple Music URL", name: "appleMusic", widget: "string" }
+
