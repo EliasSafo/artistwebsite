@@ -1,10 +1,13 @@
 # Build settings for Netlify
 
 [build]
+  # Base directory — the website lives in a subdirectory
+  base = "artist-website"
+
   # Build command
   command = "npm run build"
 
-  # Publish directory
+  # Publish directory (relative to base)
   publish = "dist"
 
   # Node version
@@ -30,4 +33,3 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
