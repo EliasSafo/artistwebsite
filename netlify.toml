@@ -1,7 +1,7 @@
 # Build settings for Netlify
 
 [build]
-  # Base directory - IMPORTANT: Project is in artist-website subdirectory
+  # Base directory — the website lives in a subdirectory
   base = "artist-website"
 
   # Build command
