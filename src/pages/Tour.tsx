@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDocumentTitle } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle';
-import { TourDateRow } from '../components/TourDateRow';
-import { upcomingTourDates, pastTourDates } from '../data/tour';
-import { Card } from '../components/Card';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { TourDateRow } from '../components/TourDateRow.tsx';
+import { upcomingTourDates, pastTourDates } from '../data/tour.ts';
+import { Card } from '../components/Card.tsx';
 
 export const Tour: React.FC = () => {
   useDocumentTitle('Tour Dates - MALAIKA');

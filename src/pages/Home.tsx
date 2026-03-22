@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDocumentTitle } from '../hooks';
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { SectionTitle } from '../components/SectionTitle';
-import { TourDateRow } from '../components/TourDateRow';
-import { MerchItemCard } from '../components/MerchItemCard';
-import { latestRelease } from '../data/music';
-import { upcomingTourDates } from '../data/tour';
-import { featuredMerch } from '../data/merch';
+import { Button } from '../components/Button.tsx';
+import { Card } from '../components/Card.tsx';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { TourDateRow } from '../components/TourDateRow.tsx';
+import { MerchItemCard } from '../components/MerchItemCard.tsx';
+import { latestRelease } from '../data/music.ts';
+import { upcomingTourDates } from '../data/tour.ts';
+import { featuredMerch } from '../data/merch.ts';
 
 export const Home: React.FC = () => {
   useDocumentTitle('MALAIKA - Official Website');
