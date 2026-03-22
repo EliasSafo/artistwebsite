@@ -1,5 +1,3 @@
-import { Release } from '../types';
-
 export const releases: Release[] = [
   {
     id: '1',
@@ -94,3 +92,4 @@ export const releases: Release[] = [
 ];
 
 export const latestRelease = releases[0];
+
