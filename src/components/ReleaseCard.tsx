@@ -2,6 +2,7 @@ import React from 'react';
 import { Release } from '../types';
 import { Card } from './Card.tsx';
 import { Button } from './Button.tsx';
+import { urlFor } from '../data/sanityImage';
 
 interface ReleaseCardProps {
   release: Release;
@@ -16,12 +17,20 @@ export const ReleaseCard: React.FC<ReleaseCardProps> = ({ release }) => {
     });
   };
 
+  // Determine the correct image URL
+  let imageUrl = '';
+  if (typeof release.coverArt === 'string' && release.coverArt.startsWith('http')) {
+    imageUrl = release.coverArt;
+  } else if (release.coverArt) {
+    imageUrl = urlFor(release.coverArt);
+  }
+
   return (
       <Card hover className="group">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-shrink-0">
             <img
-                src={release.coverArt}
+                src={imageUrl}
                 alt={`${release.title} cover art`}
                 className="w-full md:w-48 h-48 object-cover rounded-lg group-hover:shadow-2xl group-hover:shadow-primary/20 transition-shadow"
             />

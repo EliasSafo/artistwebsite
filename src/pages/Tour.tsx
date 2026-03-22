@@ -2,24 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useDocumentTitle } from '../hooks';
 import { SectionTitle } from '../components/SectionTitle.tsx';
 import { TourDateRow } from '../components/TourDateRow.tsx';
-import { upcomingTourDates, pastTourDates } from '../data/tour.ts';
+import { fetchTourDates } from '../data/tour';
+import { TourDate } from '../types';
 import { Card } from '../components/Card.tsx';
 
 export const Tour: React.FC = () => {
   useDocumentTitle('Tour Dates - MALAIKA');
   const [showPast, setShowPast] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [upcoming, setUpcoming] = useState<TourDate[]>([]);
+  const [past, setPast] = useState<TourDate[]>([]);
 
   useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 400);
+    setLoading(true);
+    fetchTourDates()
+      .then((dates) => {
+        const now = new Date();
+        const upcomingDates = dates.filter((d: TourDate) => new Date(d.date) >= now)
+          .sort((a: TourDate, b: TourDate) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        const pastDates = dates.filter((d: TourDate) => new Date(d.date) < now)
+          .sort((a: TourDate, b: TourDate) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        setUpcoming(upcomingDates);
+        setPast(pastDates);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load tour dates.');
+        setLoading(false);
+      });
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [showPast]);
-
-  const displayDates = showPast ? pastTourDates : upcomingTourDates;
+  const displayDates = showPast ? past : upcoming;
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -38,7 +52,7 @@ export const Tour: React.FC = () => {
           }`}
           aria-pressed={!showPast}
         >
-          Upcoming ({upcomingTourDates.length})
+          Upcoming ({upcoming.length})
         </button>
         <button
           onClick={() => setShowPast(true)}
@@ -49,37 +63,22 @@ export const Tour: React.FC = () => {
           }`}
           aria-pressed={showPast}
         >
-          Past ({pastTourDates.length})
+          Past ({past.length})
         </button>
       </div>
 
-      {/* Tour Dates List */}
       {loading ? (
-        <div className="space-y-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="bg-dark-card rounded-lg h-24 animate-pulse border border-white/5"
-            />
-          ))}
-        </div>
-      ) : displayDates.length > 0 ? (
-        <div className="space-y-4">
-          {displayDates.map((date) => (
-            <TourDateRow key={date.id} tourDate={date} />
-          ))}
-        </div>
+        <p className="text-gray-400 text-lg">Loading tour dates...</p>
+      ) : error ? (
+        <p className="text-red-500 text-lg">{error}</p>
+      ) : displayDates.length === 0 ? (
+        <p className="text-gray-400 text-lg">No tour dates found.</p>
       ) : (
-        <Card>
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg mb-2">
-              {showPast ? 'No past shows recorded.' : 'No upcoming shows at the moment.'}
-            </p>
-            <p className="text-gray-500 text-sm">
-              {!showPast && 'Check back soon for new tour announcements!'}
-            </p>
-          </div>
-        </Card>
+        <div className="space-y-6">
+          {displayDates.map((tourDate) => (
+            <TourDateRow key={tourDate._id || tourDate.id} tourDate={tourDate} />
+          ))}
+        </div>
       )}
 
       {/* Newsletter Signup */}

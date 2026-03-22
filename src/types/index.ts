@@ -14,20 +14,32 @@ export interface Release {
 }
 
 export interface TourDate {
-  id: string;
+  id?: string;
+  _id?: string;
   date: string;
   city: string;
   venue: string;
   country: string;
-  ticketLink?: string;
+  ticketLink?: string; // legacy
+  ticketUrl?: string; // Sanity
+  mapUrl?: string;
   soldOut?: boolean;
 }
 
+export interface SanityImageObject {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+}
+
 export interface MerchItem {
-  id: string;
+  id?: string;
+  _id?: string;
   name: string;
   price: number;
-  image: string;
+  image: string | SanityImageObject;
   sizes?: string[];
   category: 'apparel' | 'accessories' | 'music';
 }
