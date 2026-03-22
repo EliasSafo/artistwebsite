@@ -9,7 +9,9 @@ public_folder: "/uploads"
 collections:
   - name: "music"
     label: "Music Releases"
-    folder: "artist-website/content/music"
+    folder: "content/music"
+    extension: "json"
+    format: "json"
     create: true
     slug: "{{slug}}"
     fields:
@@ -25,6 +27,8 @@ collections:
   - name: "tour"
     label: "Tour Dates"
     folder: "content/tour"
+    extension: "json"
+    format: "json"
     create: true
     slug: "{{slug}}"
     fields:
@@ -38,6 +42,8 @@ collections:
   - name: "merch"
     label: "Merchandise"
     folder: "content/merch"
+    extension: "json"
+    format: "json"
     create: true
     slug: "{{slug}}"
     fields:
