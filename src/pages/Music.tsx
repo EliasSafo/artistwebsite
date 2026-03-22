@@ -77,7 +77,7 @@ export const Music: React.FC = () => {
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {filteredReleases.map((release) => (
-          <ReleaseCard key={release.id || release._id || release.slug} release={release} />
+          <ReleaseCard key={release.id || release.slug} release={release} />
         ))}
       </div>
     </div>

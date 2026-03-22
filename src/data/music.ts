@@ -3,6 +3,7 @@ import { Release } from '../types';
 export const releases: Release[] = [
   {
     id: '1',
+    _id: '1',
     title: 'Midnight Dreams',
     type: 'album',
     releaseDate: '2026-01-15',
@@ -26,6 +27,7 @@ export const releases: Release[] = [
   },
   {
     id: '2',
+    _id: '2',
     title: 'Electric Hearts',
     type: 'single',
     releaseDate: '2025-11-20',
@@ -38,6 +40,7 @@ export const releases: Release[] = [
   },
   {
     id: '3',
+    _id: '3',
     title: 'Sunset Boulevard',
     type: 'ep',
     releaseDate: '2025-08-10',
@@ -57,6 +60,7 @@ export const releases: Release[] = [
   },
   {
     id: '4',
+    _id: '4',
     title: 'Neon Lights',
     type: 'single',
     releaseDate: '2025-06-05',
@@ -69,6 +73,7 @@ export const releases: Release[] = [
   },
   {
     id: '5',
+    _id: '5',
     title: 'Origins',
     type: 'album',
     releaseDate: '2024-03-22',

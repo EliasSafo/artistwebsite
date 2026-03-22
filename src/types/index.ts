@@ -1,5 +1,6 @@
 export interface Release {
-  id: string;
+  id?: string;
+  _id?: string;
   title: string;
   type: 'album' | 'single' | 'ep';
   releaseDate: string;
