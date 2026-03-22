@@ -2,29 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useDocumentTitle } from '../hooks';
 import { SectionTitle } from '../components/SectionTitle';
 import { ReleaseCard } from '../components/ReleaseCard';
-import { releases } from '../data/music';
+import { getMusicReleases } from '../data/loadMusic';
 import { Release } from '../types';
 
 export const Music: React.FC = () => {
   useDocumentTitle('Music - MALAIKA');
   const [filter, setFilter] = useState<'all' | 'album' | 'single' | 'ep'>('all');
-  const [filteredReleases, setFilteredReleases] = useState<Release[]>(releases);
+  const [filteredReleases, setFilteredReleases] = useState<Release[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Load releases from CMS
+  const allReleases = getMusicReleases() as Release[];
+
   useEffect(() => {
-    // Simulate loading
     setLoading(true);
     const timer = setTimeout(() => {
       if (filter === 'all') {
-        setFilteredReleases(releases);
+        setFilteredReleases(allReleases);
       } else {
-        setFilteredReleases(releases.filter((release) => release.type === filter));
+        setFilteredReleases(allReleases.filter((release) => release.type === filter));
       }
       setLoading(false);
     }, 300);
-
     return () => clearTimeout(timer);
-  }, [filter]);
+  }, [filter, allReleases]);
 
   const filterButtons: { label: string; value: typeof filter }[] = [
     { label: 'All', value: 'all' },
@@ -70,7 +71,7 @@ export const Music: React.FC = () => {
       ) : filteredReleases.length > 0 ? (
         <div className="space-y-6">
           {filteredReleases.map((release) => (
-            <ReleaseCard key={release.id} release={release} />
+            <ReleaseCard key={release.slug} release={release} />
           ))}
         </div>
       ) : (

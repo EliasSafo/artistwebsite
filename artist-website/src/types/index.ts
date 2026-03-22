@@ -10,6 +10,7 @@ export interface Release {
     youtube?: string;
   };
   tracklist?: string[];
+  slug?: string; // Added for CMS integration
 }
 
 export interface TourDate {
@@ -41,4 +42,3 @@ export interface Social {
   url: string;
   icon: string;
 }
-
