@@ -16,9 +16,9 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Type", name: "type", widget: "select", options: ["album", "single", "ep"] }
-      - { label: "Release Date", name: "releaseDate", widget: "date" }
-      - { label: "Cover Art", name: "coverArt", widget: "image" }
+      - { label: "Type", name: "type", widget: "select", options: [ "album", "single", "ep" ] }
+      - { label: "Release Date", name: "releaseDate", widget: "date", required: true }
+      - { label: "Cover Art", name: "coverArt", widget: "image", required: true }
       - { label: "Spotify Link", name: "spotify", widget: "string", required: false }
       - { label: "Apple Music Link", name: "apple", widget: "string", required: false }
       - { label: "YouTube Link", name: "youtube", widget: "string", required: false }
