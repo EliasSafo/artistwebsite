@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { Home } from './pages/Home';
-import { Music } from './pages/Music';
-import { Tour } from './pages/Tour';
-import { Merch } from './pages/Merch';
-import { About } from './pages/About';
-import { Contact } from './pages/Contact';
+import { Navbar } from './components/Navbar.tsx';
+import { Footer } from './components/Footer.tsx';
+import { Home } from './pages/Home.tsx';
+import { Music } from './pages/Music.tsx';
+import { Tour } from './pages/Tour.tsx';
+import { Merch } from './pages/Merch.tsx';
+import { About } from './pages/About.tsx';
+import { Contact } from './pages/Contact.tsx';
 
 function App() {
   return (

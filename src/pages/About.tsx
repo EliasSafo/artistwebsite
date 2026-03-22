@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDocumentTitle } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { Card } from '../components/Card.tsx';
+import { Button } from '../components/Button.tsx';
 
 export const About: React.FC = () => {
   useDocumentTitle('About - MALAIKA');

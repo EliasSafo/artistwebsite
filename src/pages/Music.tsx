@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useDocumentTitle } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle';
-import { ReleaseCard } from '../components/ReleaseCard';
-import { getMusicReleases } from '../data/loadMusic';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { ReleaseCard } from '../components/ReleaseCard.tsx';
+import { getMusicReleases } from '../data/loadMusic.ts';
 import { Release } from '../types';
 
 export const Music: React.FC = () => {

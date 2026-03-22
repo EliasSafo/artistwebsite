@@ -1,6 +1,6 @@
 import React from 'react';
 import { TourDate } from '../types';
-import { Button } from './Button';
+import { Button } from './Button.tsx';
 
 interface TourDateRowProps {
   tourDate: TourDate;

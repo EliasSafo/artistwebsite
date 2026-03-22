@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDocumentTitle, useLocalStorage } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle';
-import { MerchItemCard } from '../components/MerchItemCard';
-import { CartDrawer } from '../components/CartDrawer';
-import { merchItems } from '../data/merch';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { MerchItemCard } from '../components/MerchItemCard.tsx';
+import { CartDrawer } from '../components/CartDrawer.tsx';
+import { merchItems } from '../data/merch.ts';
 import { MerchItem, CartItem } from '../types';
 
 export const Merch: React.FC = () => {

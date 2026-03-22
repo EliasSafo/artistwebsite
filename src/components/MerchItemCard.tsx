@@ -1,7 +1,7 @@
 import React from 'react';
 import { MerchItem } from '../types';
-import { Card } from './Card';
-import { Button } from './Button';
+import { Card } from './Card.tsx';
+import { Button } from './Button.tsx';
 
 interface MerchItemCardProps {
   item: MerchItem;

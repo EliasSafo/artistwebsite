@@ -1,6 +1,6 @@
 import React from 'react';
 import { CartItem } from '../types';
-import { Button } from './Button';
+import { Button } from './Button.tsx';
 
 interface CartDrawerProps {
   isOpen: boolean;

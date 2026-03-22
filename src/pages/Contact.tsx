@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDocumentTitle } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle';
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
-import { socials } from '../data/socials';
+import { SectionTitle } from '../components/SectionTitle.tsx';
+import { Card } from '../components/Card.tsx';
+import { Button } from '../components/Button.tsx';
+import { socials } from '../data/socials.ts';
 
 export const Contact: React.FC = () => {
   useDocumentTitle('Contact - MALAIKA');
