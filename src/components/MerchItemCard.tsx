@@ -2,6 +2,7 @@ import React from 'react';
 import { MerchItem } from '../types';
 import { Card } from './Card.tsx';
 import { Button } from './Button.tsx';
+import { urlFor } from '../data/sanityImage';
 
 interface MerchItemCardProps {
   item: MerchItem;
@@ -17,12 +18,20 @@ export const MerchItemCard: React.FC<MerchItemCardProps> = ({ item, onAddToCart 
     onAddToCart(item, item.sizes ? selectedSize : undefined);
   };
 
+  // Determine the correct image URL
+  let imageUrl = '';
+  if (typeof item.image === 'string' && item.image.startsWith('http')) {
+    imageUrl = item.image;
+  } else if (item.image) {
+    imageUrl = urlFor(item.image);
+  }
+
   return (
     <Card hover className="h-full flex flex-col">
       {/* Image */}
       <div className="mb-4 overflow-hidden rounded-lg">
         <img
-          src={item.image}
+          src={imageUrl}
           alt={item.name}
           className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
         />
@@ -65,4 +74,3 @@ export const MerchItemCard: React.FC<MerchItemCardProps> = ({ item, onAddToCart 
     </Card>
   );
 };
-

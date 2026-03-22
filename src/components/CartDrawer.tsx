@@ -1,6 +1,7 @@
 import React from 'react';
 import { CartItem } from '../types';
 import { Button } from './Button.tsx';
+import { urlFor } from '../data/sanityImage';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -57,56 +58,66 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
           ) : (
             <div className="space-y-4">
-              {items.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-dark-bg rounded-lg p-4 border border-white/10"
-                >
-                  <div className="flex gap-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover rounded-lg"
-                    />
-                    <div className="flex-1">
-                      <h3 className="text-white font-semibold mb-1">{item.name}</h3>
-                      {item.selectedSize && (
-                        <p className="text-gray-400 text-sm mb-2">Size: {item.selectedSize}</p>
-                      )}
-                      <p className="text-primary font-bold">${item.price}</p>
+              {items.map((item) => {
+                // Ensure image is always a string
+                let imageUrl = '';
+                if (typeof item.image === 'string' && item.image.startsWith('http')) {
+                  imageUrl = item.image;
+                } else if (item.image) {
+                  imageUrl = urlFor(item.image);
+                }
+                const itemId = item.id ?? item._id ?? '';
+                return (
+                  <div
+                    key={itemId}
+                    className="bg-dark-bg rounded-lg p-4 border border-white/10"
+                  >
+                    <div className="flex gap-4">
+                      <img
+                        src={imageUrl}
+                        alt={item.name}
+                        className="w-20 h-20 object-cover rounded-lg"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-white font-semibold mb-1">{item.name}</h3>
+                        {item.selectedSize && (
+                          <p className="text-gray-400 text-sm mb-2">Size: {item.selectedSize}</p>
+                        )}
+                        <p className="text-primary font-bold">${item.price}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Quantity Controls */}
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="flex items-center gap-3">
+                    {/* Quantity Controls */}
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => onUpdateQuantity(itemId, Math.max(0, item.quantity - 1))}
+                          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded text-white transition-colors"
+                          aria-label="Decrease quantity"
+                        >
+                          -
+                        </button>
+                        <span className="text-white font-medium w-8 text-center">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => onUpdateQuantity(itemId, item.quantity + 1)}
+                          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded text-white transition-colors"
+                          aria-label="Increase quantity"
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
-                        onClick={() => onUpdateQuantity(item.id, Math.max(0, item.quantity - 1))}
-                        className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded text-white transition-colors"
-                        aria-label="Decrease quantity"
+                        onClick={() => onRemoveItem(itemId)}
+                        className="text-red-400 hover:text-red-300 text-sm transition-colors"
                       >
-                        -
-                      </button>
-                      <span className="text-white font-medium w-8 text-center">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                        className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded text-white transition-colors"
-                        aria-label="Increase quantity"
-                      >
-                        +
+                        Remove
                       </button>
                     </div>
-                    <button
-                      onClick={() => onRemoveItem(item.id)}
-                      className="text-red-400 hover:text-red-300 text-sm transition-colors"
-                    >
-                      Remove
-                    </button>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -135,4 +146,3 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     </>
   );
 };
-

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDocumentTitle, useLocalStorage } from '../hooks';
 import { SectionTitle } from '../components/SectionTitle.tsx';
 import { MerchItemCard } from '../components/MerchItemCard.tsx';
 import { CartDrawer } from '../components/CartDrawer.tsx';
-import { merchItems } from '../data/merch.ts';
+import { fetchMerchItems } from '../data/merch';
 import { MerchItem, CartItem } from '../types';
 
 export const Merch: React.FC = () => {
@@ -11,6 +11,22 @@ export const Merch: React.FC = () => {
   const [cart, setCart] = useLocalStorage<CartItem[]>('malaika-cart', []);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [merchItems, setMerchItems] = useState<MerchItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchMerchItems()
+      .then((items) => {
+        setMerchItems(items);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load merch items.');
+        setLoading(false);
+      });
+  }, []);
 
   const handleAddToCart = (item: MerchItem, size?: string) => {
     const existingItemIndex = cart.findIndex(
@@ -85,15 +101,21 @@ export const Merch: React.FC = () => {
       )}
 
       {/* Merch Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {merchItems.map((item) => (
-          <MerchItemCard
-            key={item.id}
-            item={item}
-            onAddToCart={handleAddToCart}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <p className="text-gray-400 text-lg">Loading merch...</p>
+      ) : error ? (
+        <p className="text-red-500 text-lg">{error}</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {merchItems.map((item) => (
+            <MerchItemCard
+              key={item._id || item.id}
+              item={item}
+              onAddToCart={handleAddToCart}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Cart Drawer */}
       <CartDrawer

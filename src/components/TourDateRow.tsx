@@ -17,6 +17,7 @@ export const TourDateRow: React.FC<TourDateRowProps> = ({ tourDate }) => {
   };
 
   const date = formatDate(tourDate.date);
+  const ticketUrl = tourDate.ticketUrl || tourDate.ticketLink;
 
   return (
     <div className="bg-dark-card border border-white/10 rounded-lg p-4 md:p-6 hover:border-primary/50 transition-all group">
@@ -42,24 +43,19 @@ export const TourDateRow: React.FC<TourDateRowProps> = ({ tourDate }) => {
             <div className="px-6 py-3 bg-white/5 rounded-lg text-gray-400 font-medium">
               Sold Out
             </div>
-          ) : tourDate.ticketLink ? (
+          ) : ticketUrl ? (
             <a
-              href={tourDate.ticketLink}
+              href={ticketUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button size="md" variant="primary">
-                Get Tickets
+                Tickets
               </Button>
             </a>
-          ) : (
-            <div className="px-6 py-3 bg-white/5 rounded-lg text-gray-400 font-medium">
-              Past Show
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
   );
 };
-
