@@ -5,18 +5,18 @@ import { Card } from '../components/Card.tsx';
 import { Button } from '../components/Button.tsx';
 
 export const About: React.FC = () => {
-  useDocumentTitle('About - MALAIKA');
+  useDocumentTitle('About - Malaïka');
 
   return (
     <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <SectionTitle>About MALAIKA</SectionTitle>
+      <SectionTitle>About Malaïka</SectionTitle>
 
       {/* Press Photo */}
       <div className="mb-12">
         <img
-          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=600&fit=crop"
-          alt="MALAIKA press photo"
-          className="w-full h-96 object-cover rounded-xl shadow-2xl"
+          src={`${import.meta.env.BASE_URL}Pictures/EMZ_3320_Original.jpg`}
+          alt="Malaïka press photo"
+          className="w-full h-96 object-cover object-top md:object-[center_30%] rounded-xl shadow-2xl"
         />
       </div>
 
@@ -24,16 +24,16 @@ export const About: React.FC = () => {
       <Card className="mb-8">
         <h3 className="text-2xl font-bold text-white mb-4">Bio</h3>
         <p className="text-gray-300 text-lg leading-relaxed mb-4">
-          MALAIKA is an electronic music artist pushing the boundaries of synthwave, indie pop,
-          and alternative soundscapes. Known for dreamy melodies, ethereal vocals, and
-          atmospheric production, MALAIKA creates sonic experiences that transport listeners
-          to neon-lit dreamscapes.
+          Malaïka Naa Lamley Aryee-Boi (stage name Malaïka) is a Ghanaian-German-Cameroonian singer and creative currently based in Accra.
+        </p>
+        <p className="text-gray-300 text-lg leading-relaxed mb-4">
+          Her passion for music started very early in life, shaped heavily by her parents’ love for everything from soul, funk and R&B to zouk, makossa and afrobeat.
+        </p>
+        <p className="text-gray-300 text-lg leading-relaxed mb-4">
+          She is moved by music she describes as ‘feeling like a warm hug,’ having been influenced by soulful women artists such as Jill Scott, India Arie & Cleo Sol.
         </p>
         <p className="text-gray-300 text-lg leading-relaxed">
-          Since debuting in 2024, MALAIKA has captivated audiences worldwide with critically
-          acclaimed releases and electrifying live performances. With millions of streams
-          and a rapidly growing fanbase, MALAIKA is one of the most exciting emerging voices
-          in electronic music.
+          Malaïka explores a sound that is soft and honest and free, a reflection of the world she would like to see.
         </p>
       </Card>
 
@@ -42,28 +42,10 @@ export const About: React.FC = () => {
         <h3 className="text-2xl font-bold text-white mb-4">The Story</h3>
         <div className="space-y-4 text-gray-300 leading-relaxed">
           <p>
-            Born from a love of 80s synth music and modern electronic production, MALAIKA emerged
-            in the underground music scene with a unique sound that bridges nostalgia and innovation.
-            The project began in a small bedroom studio, where countless nights were spent crafting 
-            the perfect blend of vintage synthesizers and contemporary beats.
+            Malaïka Naa Lamley Aryee-Boi (stage name Malaïka) is a Ghanaian-German-Cameroonian singer and creative currently based in Accra. Her passion for music started very early in life, shaped heavily by her parents’ love for everything from soul, funk and R&B to zouk, makossa and afrobeat.
           </p>
           <p>
-            The debut album "Origins" introduced the world to MALAIKA's signature sound—a mesmerizing
-            fusion of pulsing basslines, shimmering synths, and introspective lyrics. The album's
-            success led to sold-out shows across North America and festival appearances at major 
-            electronic music events.
-          </p>
-          <p>
-            Following up with the "Sunset Boulevard" EP and hit singles like "Electric Hearts" and 
-            "Neon Lights," MALAIKA has continued to evolve while staying true to the core aesthetic
-            that fans love. The latest album "Midnight Dreams" represents the culmination of this
-            artistic journey, featuring MALAIKA's most ambitious and polished work to date.
-          </p>
-          <p>
-            When not in the studio or on tour, MALAIKA is an advocate for mental health awareness
-            and environmental sustainability, often incorporating these themes into music and
-            public appearances. The future is bright for MALAIKA, with new collaborations, tours,
-            and releases on the horizon.
+            She is moved by music she describes as ‘feeling like a warm hug,’ having been influenced by soulful women artists such as Jill Scott, India Arie & Cleo Sol. Malaïka explores a sound that is soft and honest and free, a reflection of the world she would like to see.
           </p>
         </div>
       </Card>
@@ -92,7 +74,7 @@ export const About: React.FC = () => {
       <Card>
         <h3 className="text-2xl font-bold text-white mb-4">Press / EPK</h3>
         <p className="text-gray-300 mb-6">
-          Download the official Electronic Press Kit including high-resolution photos, 
+          Download the official Electronic Press Kit including high-resolution photos,
           bio, technical rider, and more.
         </p>
         <a
