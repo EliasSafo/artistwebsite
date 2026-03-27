@@ -10,7 +10,7 @@ import { Contact } from './pages/Contact.tsx';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-dark-bg">
         <Navbar />
         <main>

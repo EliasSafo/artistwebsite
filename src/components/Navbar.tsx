@@ -6,12 +6,12 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
 
   const links = [
-    { to: '/', label: 'Home' },
-    { to: '/music', label: 'Music' },
-    { to: '/tour', label: 'Tour' },
-    { to: '/merch', label: 'Merch' },
-    { to: '/about', label: 'About' },
-    { to: '/contact', label: 'Contact' },
+    { to: "home", label: 'Home' },
+    { to: "music", label: 'Music' },
+    { to: "tour", label: 'Tour' },
+    { to: "merch", label: 'Merch' },
+    { to: "about", label: 'About' },
+    { to: "contact", label: 'Contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

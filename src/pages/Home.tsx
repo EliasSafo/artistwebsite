@@ -95,12 +95,12 @@ export const Home: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/music">
               <Button size="lg" variant="primary">
-                🎧 Listen Now
+                Listen Now
               </Button>
             </Link>
             <Link to="/tour">
               <Button size="lg" variant="secondary">
-                📅 Tour Dates
+                Tour Dates
               </Button>
             </Link>
           </div>

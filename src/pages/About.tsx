@@ -78,7 +78,7 @@ export const About: React.FC = () => {
           bio, technical rider, and more.
         </p>
         <a
-          href="/press-kit.pdf"
+          href={`${import.meta.env.BASE_URL}press-kit.pdf`}
           download
           target="_blank"
           rel="noopener noreferrer"
