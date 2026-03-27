@@ -7,8 +7,7 @@ export const Navbar: React.FC = () => {
 
   const links = [
     { to: "home", label: 'Home' },
-    { to: "music", label: 'Music' },
-    { to: "tour", label: 'Tour' },
+    { to: "discover", label: 'Discover' },
     { to: "merch", label: 'Merch' },
     { to: "about", label: 'About' },
     { to: "contact", label: 'Contact' },

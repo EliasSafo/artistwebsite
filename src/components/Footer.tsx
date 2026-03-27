@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { socials } from '../data/socials.ts';
+import { FaInstagram, FaTiktok, FaYoutube, FaSpotify, FaApple } from 'react-icons/fa';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -8,15 +9,20 @@ export const Footer: React.FC = () => {
   };
 
   const getSocialIcon = (icon: string) => {
-    const icons: { [key: string]: string } = {
-      instagram: '📷',
-      twitter: '🐦',
-      tiktok: '🎵',
-      spotify: '🎧',
-      youtube: '📺',
-      apple: '🍎',
-    };
-    return icons[icon] || '🔗';
+    switch (icon) {
+      case 'instagram':
+        return <FaInstagram className="w-6 h-6" />;
+      case 'tiktok':
+        return <FaTiktok className="w-6 h-6" />;
+      case 'spotify':
+        return <FaSpotify className="w-6 h-6" />;
+      case 'youtube':
+        return <FaYoutube className="w-6 h-6" />;
+      case 'apple':
+        return <FaApple className="w-6 h-6" />;
+      default:
+        return null;
+    }
   };
 
   return (

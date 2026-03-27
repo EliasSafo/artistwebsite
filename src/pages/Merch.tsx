@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDocumentTitle, useLocalStorage } from '../hooks';
-import { SectionTitle } from '../components/SectionTitle.tsx';
 import { MerchItemCard } from '../components/MerchItemCard.tsx';
 import { CartDrawer } from '../components/CartDrawer.tsx';
 import { fetchMerchItems } from '../data/merch';
@@ -73,65 +72,64 @@ export const Merch: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Merch Banner with Background Image */}
+      {/* Merch Banner with Background Image - Full Height with Content Overlay */}
       <section
-        className="relative overflow-hidden bg-gray-900 py-20 md:py-28 flex items-center justify-center"
+        className="relative overflow-hidden bg-dark-bg min-h-screen flex items-center justify-center"
         style={{
           backgroundImage: `url(${import.meta.env.BASE_URL}Pictures/EMZ_0347_Original.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Merch</h1>
-          <p className="text-xl text-gray-200 drop-shadow">Shop exclusive Malaïka merchandise and support the music!</p>
+        <div className="absolute inset-0 bg-dark-bg/60" aria-hidden="true"></div>
+
+        {/* Merch Content Overlay */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Merch</h1>
+            <p className="text-xl text-gray-200 drop-shadow mb-8">Shop exclusive Malaïka merchandise and support the music!</p>
+
+            {/* Cart Button */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative bg-primary hover:bg-primary-dark text-white font-medium rounded-lg px-6 py-3 transition-colors inline-flex items-center gap-2"
+              aria-label={`Shopping cart with ${cart.length} items`}
+            >
+              🛒 Cart
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                  {cart.length}
+                </span>
+              )}
+            </button>
+          </div>
+
+          {/* Notification Toast */}
+          {notification && (
+            <div className="fixed top-20 right-4 bg-primary text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in">
+              {notification}
+            </div>
+          )}
+
+          {/* Merch Grid */}
+          {loading ? (
+            <p className="text-gray-200 text-lg text-center">Loading merch...</p>
+          ) : error ? (
+            <p className="text-red-500 text-lg text-center">{error}</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {merchItems.map((item) => (
+                <MerchItemCard
+                  key={item._id || item.id}
+                  item={item}
+                  onAddToCart={handleAddToCart}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
-
-      <div className="flex justify-between items-start mb-8">
-        <SectionTitle subtitle="Official NOVA merchandise">
-          Shop
-        </SectionTitle>
-
-        {/* Cart Button */}
-        <button
-          onClick={() => setIsCartOpen(true)}
-          className="relative bg-primary hover:bg-primary-dark text-white font-medium rounded-lg px-6 py-3 transition-colors flex items-center gap-2"
-          aria-label={`Shopping cart with ${cart.length} items`}
-        >
-          🛒 Cart
-          {cart.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
-              {cart.length}
-            </span>
-          )}
-        </button>
-      </div>
-
-      {/* Notification Toast */}
-      {notification && (
-        <div className="fixed top-20 right-4 bg-primary text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in">
-          {notification}
-        </div>
-      )}
-
-      {/* Merch Grid */}
-      {loading ? (
-        <p className="text-gray-400 text-lg">Loading merch...</p>
-      ) : error ? (
-        <p className="text-red-500 text-lg">{error}</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {merchItems.map((item) => (
-            <MerchItemCard
-              key={item._id || item.id}
-              item={item}
-              onAddToCart={handleAddToCart}
-            />
-          ))}
-        </div>
-      )}
 
       {/* Cart Drawer */}
       <CartDrawer

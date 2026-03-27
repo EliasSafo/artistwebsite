@@ -7,11 +7,6 @@ export const socials: Social[] = [
     icon: 'instagram',
   },
   {
-    platform: 'Twitter',
-    url: 'https://twitter.com/malaikamusic',
-    icon: 'twitter',
-  },
-  {
     platform: 'TikTok',
     url: 'https://tiktok.com/@malaikamusic',
     icon: 'tiktok',

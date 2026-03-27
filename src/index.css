@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-dark-bg;
+    background-color: #0a0a0a;
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-dark-bg text-white antialiased;
+    background-color: #0a0a0a;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth;
   }
 }
 

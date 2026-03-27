@@ -13,7 +13,7 @@ export default {
           light: '#4ade80',  // green-400
         },
         dark: {
-          bg: '#0a0a0a',
+          bg: '#0a0a0a', // black background
           card: '#1a1a1a',
           hover: '#252525',
         }

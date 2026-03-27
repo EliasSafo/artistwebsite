@@ -28,7 +28,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
+        className="fixed inset-0 bg-dark-bg/60 z-40 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
