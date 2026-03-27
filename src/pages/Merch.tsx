@@ -7,7 +7,7 @@ import { fetchMerchItems } from '../data/merch';
 import { MerchItem, CartItem } from '../types';
 
 export const Merch: React.FC = () => {
-  useDocumentTitle('Merch - MALAIKA');
+  useDocumentTitle('Merch - malaïka');
   const [cart, setCart] = useLocalStorage<CartItem[]>('malaika-cart', []);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
@@ -72,7 +72,23 @@ export const Merch: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="min-h-screen">
+      {/* Merch Banner with Background Image */}
+      <section
+        className="relative overflow-hidden bg-gray-900 py-20 md:py-28 flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${import.meta.env.BASE_URL}Pictures/EMZ_0347_Original.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Merch</h1>
+          <p className="text-xl text-gray-200 drop-shadow">Shop exclusive Malaïka merchandise and support the music!</p>
+        </div>
+      </section>
+
       <div className="flex justify-between items-start mb-8">
         <SectionTitle subtitle="Official NOVA merchandise">
           Shop

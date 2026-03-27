@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#8b5cf6',
-          dark: '#7c3aed',
-          light: '#a78bfa',
+          DEFAULT: '#22c55e', // green-500
+          dark: '#16a34a',   // green-600
+          light: '#4ade80',  // green-400
         },
         dark: {
           bg: '#0a0a0a',
@@ -26,4 +26,3 @@ export default {
   },
   plugins: [],
 }
-

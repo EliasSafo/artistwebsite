@@ -12,7 +12,7 @@ import { fetchMerchItems } from '../data/merch';
 import { Release, TourDate, MerchItem } from '../types';
 
 export const Home: React.FC = () => {
-  useDocumentTitle('MALAIKA - Official Website');
+  useDocumentTitle('Malaïka - Official Website');
 
   // State for async data
   const [latestRelease, setLatestRelease] = useState<Release | null>(null);
@@ -75,13 +75,21 @@ export const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-primary/20 to-dark-bg py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-            MALAIKA
+      {/* Hero Section with Background Image */}
+      <section
+        className="relative overflow-hidden bg-gray-900 py-20 md:py-32 flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${import.meta.env.BASE_URL}Pictures/DSC04385_Original.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg animate-fade-in">
+            Malaïka
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto drop-shadow">
             Electronic music artist blending synthwave, pop, and indie vibes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -162,8 +170,8 @@ export const Home: React.FC = () => {
         <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="NOVA - Latest Music Video"
+            src="https://www.youtube.com/embed/oWGf-00kLTc"
+            title="Featured Video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

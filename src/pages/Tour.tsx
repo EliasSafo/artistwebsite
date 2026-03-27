@@ -7,7 +7,7 @@ import { TourDate } from '../types';
 import { Card } from '../components/Card.tsx';
 
 export const Tour: React.FC = () => {
-  useDocumentTitle('Tour Dates - MALAIKA');
+  useDocumentTitle('Tour Dates - malaïka');
   const [showPast, setShowPast] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,8 +36,24 @@ export const Tour: React.FC = () => {
   const displayDates = showPast ? past : upcoming;
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <SectionTitle subtitle="Catch MALAIKA live on tour">
+    <div className="min-h-screen">
+      {/* Tour Banner with Background Image */}
+      <section
+        className="relative overflow-hidden bg-gray-900 py-20 md:py-28 flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${import.meta.env.BASE_URL}Pictures/EMZ_3625_Original.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Tour Dates</h1>
+          <p className="text-xl text-gray-200 drop-shadow">Catch Malaïka live on tour and experience the music in person.</p>
+        </div>
+      </section>
+
+      <SectionTitle subtitle="Catch malaïka live on tour">
         Tour Dates
       </SectionTitle>
 

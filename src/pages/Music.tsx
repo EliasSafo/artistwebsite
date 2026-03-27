@@ -6,7 +6,7 @@ import { fetchMusicReleases } from '../data/loadMusic';
 import { Release } from '../types';
 
 export const Music: React.FC = () => {
-  useDocumentTitle('Music - MALAIKA');
+  useDocumentTitle('Music - malaïka');
 
   const [filter, setFilter] = useState<'all' | 'album' | 'single' | 'ep'>('all');
   const [allReleases, setAllReleases] = useState<Release[]>([]);
